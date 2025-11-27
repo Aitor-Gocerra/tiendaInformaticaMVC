@@ -1,10 +1,3 @@
-<?php
-	require_once __DIR__ . '/../Controladores/ConCaracteristicas.php';
-	require_once __DIR__ . '/../Controladores/ConCategoria.php';
-
-	$objCategoria = new ConCategoria();
-	$objCaracteristicas = new ConCaracteristicas();
-?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,7 +27,11 @@
 			<select name="categoria">
 				<option value="">-- Selecciona una --</option>
 				<?php
-					$objCategoria->cargarCategorias();
+					if ($controlador->categorias) {
+						foreach ($controlador->categorias as $fila) {
+							echo "<option value='{$fila['idCategoria']}'>{$fila['Nombre']}</option>";
+						}
+					}
 				?>
 			</select>
 			<br>
@@ -42,7 +39,14 @@
 			<label for="caracteristicas">Caracteristicas</label>
 			<ul>
 				<?php
-					$objCaracteristicas->cargarCaracteristicas();
+					if ($controlador->caracteristicas) {
+						foreach ($controlador->caracteristicas as $fila) {
+							echo "<li>";
+							echo "<input type='checkbox' name='caracteristicas[]' value='{$fila['idCaracteristicas']}'>";
+							echo "<label for='{$fila['Nombre']}'>{$fila['Nombre']}</label>";
+							echo "</li>";
+						}
+					}
 				?>
 			</ul>
 

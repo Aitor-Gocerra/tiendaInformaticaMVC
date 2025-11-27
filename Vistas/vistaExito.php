@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Registro Completado</title>
-    <link rel="stylesheet" href="estiloLista.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro Completado</title>
+        <link rel="stylesheet" href="Vistas/estiloLista.css">
+    </head>
 
-<body>
-    <div class="mensaje">
-        Ordenador guardado correctamente
-    </div>
-<a href="../listar.php" class="volver">Ver lista de ordenadores</a>
-</body>
+    <body>
+        <div class="mensaje">
+            <?php 
+            // Mensaje del controlador
+            echo $controlador->mensaje; 
+            ?>
+        </div>
+        <a href="listar.php" class="volver">Ver lista de ordenadores</a>
+    </body>
 
 </html>

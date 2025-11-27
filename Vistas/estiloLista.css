@@ -1,0 +1,39 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.mensaje {
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.volver {
+    margin-top: 20px;
+    display: inline-block;
+    text-decoration: none;
+    color: blue;
+}

@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '/../Modelos/ModCategoria.php';
+    require_once __DIR__ . '/../Modelos/ModCategorias.php';
 
     class ConCategoria {
         public $accion;

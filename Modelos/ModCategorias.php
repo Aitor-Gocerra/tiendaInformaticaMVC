@@ -1,5 +1,5 @@
 <?php
-	require_once 'ModConexion.php';
+	require_once __DIR__ .'/../Modelos/ModConexion.php';
 	
 	class Categoria extends Conexion {
 		

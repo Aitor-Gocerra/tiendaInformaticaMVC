@@ -1,12 +1,12 @@
 <?php
-require_once 'Controladores/ConOrdenador.php';
+    require_once 'Controladores/ConOrdenador.php';
 
-// Instanciar el controlador
-$controlador = new ConOrdenadores();
+    // Instanciar el controlador
+    $controlador = new ConOrdenadores();
 
-// Obtener los datos
-$datos = $controlador->listarOrdenadores();
+    // Obtener los datos
+    $datos = $controlador->listarOrdenadores();
 
-// Cargar la vista
-include 'Vistas/vistaListarOrdenadores.php';
+    // Cargar la vista
+    include 'Vistas/vistaListarOrdenadores.php';
 ?>

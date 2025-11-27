@@ -23,11 +23,13 @@
         /* OBTENER LOS DATOS PARA RELLENAR EL FORMULARIO */
 
         public function obtenerDatosFormulario(){
-            // Aqui obtengo las categorias accediendo a su metodo
-            $this->categorias = Categoria::listarCategorias();
+            // Instanciar las clases de modelo
+            $modeloCategoria = new Categoria();
+            $modeloCaracteristicas = new Caracteristicas();
             
-            // Aqui las caracteristicas
-            $this->caracteristicas = Caracteristicas::listarCaracteristicas();
+            // Obtener datos usando métodos de instancia
+            $this->categorias = $modeloCategoria->listarCategorias();
+            $this->caracteristicas = $modeloCaracteristicas->listarCaracteristicas();
         }
 
         public function guardarOrdenador(){

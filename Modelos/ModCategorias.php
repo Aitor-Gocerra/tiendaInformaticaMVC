@@ -3,7 +3,7 @@
 	
 	class Categoria extends Conexion {
 		
-		public static function listarCategorias(){
+		public function listarCategorias(){
 
 			$sql = "
 				SELECT * FROM categorias;

@@ -3,7 +3,7 @@
 	
 	class Caracteristicas extends Conexion{
 		
-		public static function listarCaracteristicas(){
+		public function listarCaracteristicas(){
 
 			$sql = "
 				SELECT * FROM caracteristicas;

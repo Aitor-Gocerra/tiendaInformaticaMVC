@@ -9,6 +9,7 @@
         public $categorias;
         public $caracteristicas;
         public $mensaje;
+        public $vistas;
 
         public function __construct(){
 

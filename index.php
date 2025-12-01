@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . 'configIndex.php';
+    require_once __DIR__ . '/configIndex.php';
 
     if(!isset($_GET['c'])){
         $_GET['c'] = CONTROLADOR_DEFECTO;
@@ -10,23 +10,23 @@
     }
 
     $rutaControlador = RUTA_CONTROLADORES . $_GET['c'] . '.php';
-
+    
+    require_once $rutaControlador;
+        
     $controlador = 'Con' . $_GET['c'];
     $objControlador = new $controlador();
 
-    $datos = []; /* Para guardar los datos que obtenga del controlodaor */
+    $datos = []; /* Para guardar los datos que obtenga del controlador */
 
     if(method_exists($objControlador, $_GET['m'])){
-        $datos = $objControlador->$_GET['m']();
-        /* $datos = $objControlador->{$_GET['m']}();  VERSION CORRECTA Y MAS SEGURA*/
-
+        $datos = $objControlador->{$_GET['m']}();
     }
 
-    if($objControlador->vistas != ''){
+    if($objControlador->vista != ''){
         if(is_array($datos)){
             extract($datos);
-        }
-        require_once RUTA_VISTAS . $objControlador->vista . '.php';
     }
+    require_once RUTA_VISTAS . $objControlador->vista . '.php';
+}
 
 ?>

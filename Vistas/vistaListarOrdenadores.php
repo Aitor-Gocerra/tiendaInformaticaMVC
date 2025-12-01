@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Listado de Ordenadores</title>
     <link rel="stylesheet" href="Vistas/estiloLista.css">
 </head>
+
 <body>
 
     <h1>Listado de Ordenadores</h1>
+
+    <a href="index.php?c=Ordenadores&m=obtenerDatosFormulario">Registrar Nuevo Ordenador</a>
 
     <table>
         <thead>
@@ -21,7 +25,7 @@
         </thead>
         <tbody>
             <?php
-                foreach ($datos as $ordenador) {
+                foreach ($ordenadores as $ordenador) {
                     echo "<tr>";
                     echo "<td>" . $ordenador['idOrdenador'] . "</td>";
                     echo "<td>" . $ordenador['Marca'] . "</td>";
@@ -29,10 +33,11 @@
                     echo "<td>" . $ordenador['CodigoBarras'] . "</td>";
                     echo "<td>" . $ordenador['idCategoria'] . "</td>";
                     echo "</tr>";
-                }
+                } 
             ?>
         </tbody>
     </table>
 
 </body>
+
 </html>

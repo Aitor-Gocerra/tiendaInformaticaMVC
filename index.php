@@ -1,32 +1,32 @@
 <?php
-    require_once __DIR__ . '/configIndex.php';
+require_once __DIR__ . '/configIndex.php';
 
-    if (!isset($_GET['c'])) {
-        $_GET['c'] = CONTROLADOR_DEFECTO;
+if (!isset($_GET['c'])) {
+    $_GET['c'] = CONTROLADOR_DEFECTO;
+}
+
+if (!isset($_GET['m'])) {
+    $_GET['m'] = METODO_DEFECTO;
+}
+
+$rutaControlador = RUTA_CONTROLADORES . $_GET['c'] . '.php';
+
+require_once $rutaControlador;
+
+$controlador = 'Con' . $_GET['c'];
+$objControlador = new $controlador();
+
+$datos = []; /* Para guardar los datos que obtenga del controlador */
+
+if (method_exists($objControlador, $_GET['m'])) { // Comprueba si el controlador tiene el metodo
+    $datos = $objControlador->{$_GET['m']}(); // Cojo los datos
+}
+
+if ($objControlador->vista != '') { // Comprueba si el controlador tiene una vista
+    if (is_array($datos)) { // Comprueba si el controlador tiene datos
+        extract($datos);
     }
-
-    if (!isset($_GET['m'])) {
-        $_GET['m'] = MODELO_DEFECTO;
-    }
-
-    $rutaControlador = RUTA_CONTROLADORES . $_GET['c'] . '.php';
-
-    require_once $rutaControlador;
-
-    $controlador = 'Con' . $_GET['c'];
-    $objControlador = new $controlador();
-
-    $datos = []; /* Para guardar los datos que obtenga del controlador */
-
-    if (method_exists($objControlador, $_GET['m'])) {
-        $datos = $objControlador->{$_GET['m']}();
-    }
-
-    if ($objControlador->vista != '') {
-        if (is_array($datos)) {
-            extract($datos);
-        }
-        require_once RUTA_VISTAS . $objControlador->vista . '.php';
-    }
+    require_once RUTA_VISTAS . $objControlador->vista . '.php';
+}
 
 ?>

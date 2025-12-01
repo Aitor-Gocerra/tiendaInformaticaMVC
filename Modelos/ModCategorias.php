@@ -1,21 +1,24 @@
 <?php
-	require_once __DIR__ .'/../Modelos/ModConexion.php';
-	
-	class Categoria extends Conexion {
-		
-		public static function listarCategorias(){
+require_once __DIR__ . '/../Modelos/ModConexion.php';
 
-			$sql = "
+class Categoria extends Conexion
+{
+
+	public static function listarCategorias()
+	{
+
+		$modelo = new Categoria();
+		$sql = "
 				SELECT * FROM categorias;
 			";
-			
-			$stmt = $this->conexion->prepare($sql);
-            $stmt->execute();
 
-            $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$stmt = $modelo->conexion->prepare($sql);
+		$stmt->execute();
 
-            return !empty($resultado) ? $resultado : null;
-			
-		}
+		$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		return !empty($resultado) ? $resultado : null;
+
 	}
+}
 ?>

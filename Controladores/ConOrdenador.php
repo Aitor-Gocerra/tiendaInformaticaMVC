@@ -1,82 +1,87 @@
 <?php
-    require_once __DIR__ . '/../Modelos/ModOrdenador.php';
-    require_once __DIR__ . '/../Modelos/ModCategorias.php';
-    require_once __DIR__ . '/../Modelos/ModCaracteristicas.php';
+require_once __DIR__ . '/../Modelos/ModOrdenador.php';
+require_once __DIR__ . '/../Modelos/ModCategorias.php';
+require_once __DIR__ . '/../Modelos/ModCaracteristicas.php';
 
-    class ConOrdenadores{
+class ConOrdenador
+{
 
-        private $accion;
-        public $categorias;
-        public $caracteristicas;
-        public $mensaje;
-        public $vista;
+    private $accion;
+    public $categorias;
+    public $caracteristicas;
+    public $mensaje;
+    public $vista;
 
-        public function __construct(){
+    public function __construct()
+    {
 
-            $this->accion = new Ordenador();
-            $this->vista = ''; // Inicializar vista vacía
+        $this->accion = new Ordenador();
+        $this->vista = ''; // Inicializar vista vacía
 
-        }
+    }
 
-        public function listarOrdenadores(){
+    public function listarOrdenadores()
+    {
 
-            $this->vista = 'vistaListarOrdenadores';
-            $ordenadores = $this->accion->listarOrdenadores();
-            return ['ordenadores' => $ordenadores];
+        $this->vista = 'vistaListarOrdenadores';
+        $ordenadores = $this->accion->listarOrdenadores();
+        return ['ordenadores' => $ordenadores];
 
-        }
+    }
 
-        /* OBTENER LOS DATOS PARA RELLENAR EL FORMULARIO */
+    /* OBTENER LOS DATOS PARA RELLENAR EL FORMULARIO */
 
-        public function obtenerDatosFormulario(){
+    public function obtenerDatosFormulario()
+    {
 
-            $this->vista = 'formularioRegistro';
+        $this->vista = 'formularioRegistro';
 
-            // Aqui obtengo las categorias accediendo a su metodo
-            $this->categorias = Categoria::listarCategorias();
+        // Aqui obtengo las categorias accediendo a su metodo
+        $this->categorias = Categoria::listarCategorias();
 
-            // Aqui las caracteristicas
-            $this->caracteristicas = Caracteristicas::listarCaracteristicas();
+        // Aqui las caracteristicas
+        $this->caracteristicas = Caracteristicas::listarCaracteristicas();
 
-            return [
-                'categorias' => $this->categorias,
-                'caracteristicas' => $this->caracteristicas
-            ];
-        }
+        return [
+            'categorias' => $this->categorias,
+            'caracteristicas' => $this->caracteristicas
+        ];
+    }
 
-        public function guardarOrdenador(){
-            
-            $this->vista = 'vistaExito';
+    public function guardarOrdenador()
+    {
 
-            // Recoger datos
-            $marca = $_POST['marca'];
-            $modelo = $_POST['modelo'];
-            $codigo = $_POST['codigoBarras'];
-            $categoria = $_POST['categoria'];
-            $caracteristicas = $_POST['caracteristicas'] ?? [];
+        $this->vista = 'vistaExito';
 
-            // Insertar ordenador
-            $idOrdenador = $this->accion->introducirOrdenador(
-                $marca,
-                $modelo,
-                $codigo,
-                $categoria
-            );
+        // Recoger datos
+        $marca = $_POST['marca'];
+        $modelo = $_POST['modelo'];
+        $codigo = $_POST['codigoBarras'];
+        $categoria = $_POST['categoria'];
+        $caracteristicas = $_POST['caracteristicas'] ?? [];
 
-            if ($idOrdenador) {
+        // Insertar ordenador
+        $idOrdenador = $this->accion->introducirOrdenador(
+            $marca,
+            $modelo,
+            $codigo,
+            $categoria
+        );
 
-                foreach ($caracteristicas as $car) {
-                    $this->accion->introducirOrdenadorCaracteristicas($idOrdenador, $car);
-                }
+        if ($idOrdenador) {
 
-                // Mensaje Exito
-                $this->mensaje = "Ordenador guardado correctamente con ID: " . $idOrdenador;
-            } else {
-                // Mensaje de error
-                $this->mensaje = "Error al guardar el ordenador";
+            foreach ($caracteristicas as $car) {
+                $this->accion->introducirOrdenadorCaracteristicas($idOrdenador, $car);
             }
 
-            return ['mensaje' => $this->mensaje];
+            // Mensaje Exito
+            $this->mensaje = "Ordenador guardado correctamente con ID: " . $idOrdenador;
+        } else {
+            // Mensaje de error
+            $this->mensaje = "Error al guardar el ordenador";
         }
+
+        return ['mensaje' => $this->mensaje];
     }
+}
 ?>

@@ -8,23 +8,23 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>Listado de Ordenadores</h1>
 
-    <h1>Listado de Ordenadores</h1>
+        <a href="index.php?c=Ordenador&m=obtenerDatosFormulario">Registrar Nuevo Ordenador</a>
 
-    <a href="index.php?c=Ordenadores&m=obtenerDatosFormulario">Registrar Nuevo Ordenador</a>
-
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Marca</th>
-                <th>Modelo</th>
-                <th>Código de Barras</th>
-                <th>ID Categoría</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Código de Barras</th>
+                    <th>ID Categoría</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
                 foreach ($ordenadores as $ordenador) {
                     echo "<tr>";
                     echo "<td>" . $ordenador['idOrdenador'] . "</td>";
@@ -33,11 +33,11 @@
                     echo "<td>" . $ordenador['CodigoBarras'] . "</td>";
                     echo "<td>" . $ordenador['idCategoria'] . "</td>";
                     echo "</tr>";
-                } 
-            ?>
-        </tbody>
-    </table>
-
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

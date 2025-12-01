@@ -8,15 +8,17 @@
 </head>
 
 <body>
-    <div class="mensaje">
-        <?php
-        // Mensaje del controlador
-        if (isset($mensaje)) {
-            echo $mensaje;
-        }
-        ?>
+    <div class="container">
+        <div class="mensaje">
+            <?php
+            // Mensaje del controlador
+            if (isset($mensaje)) {
+                echo $mensaje;
+            }
+            ?>
+        </div>
+        <a href="index.php?c=Ordenador&m=listarOrdenadores" class="volver">Ver lista de ordenadores</a>
     </div>
-    <a href="index.php?c=Ordenadores&m=listarOrdenadores" class="volver">Ver lista de ordenadores</a>
 </body>
 
 </html>

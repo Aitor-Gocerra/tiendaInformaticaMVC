@@ -1,7 +1,7 @@
 <?php
     DEFINE('RUTA_VISTAS', 'Vistas/');
     DEFINE('RUTA_CONTROLADORES', 'Controladores/');
-    
-    DEFINE('CONTROLADOR_DEFECTO', 'Ordenadores');
+
+    DEFINE('CONTROLADOR_DEFECTO', 'Ordenador');
     DEFINE('METODO_DEFECTO', 'listarOrdenadores');
 ?>

@@ -2,6 +2,6 @@
     DEFINE('RUTA_VISTAS', 'Vistas/');
     DEFINE('RUTA_CONTROLADORES', 'Controladores/');
 
-    DEFINE('CONTROLADOR_DEFECTO', 'Ordenador');
-    DEFINE('METODO_DEFECTO', 'listarOrdenadores');
+    DEFINE('CONTROLADOR_DEFECTO', 'Login');
+    DEFINE('METODO_DEFECTO', 'index');
 ?>

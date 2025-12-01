@@ -36,7 +36,7 @@
                 <?php
                 foreach ($caracteristicas as $fila) {
                     echo "<li>";
-                    echo "<input type='checkbox' name='caracteristicas[]' value='{$fila['idCaracteristicas']}'>";
+                    echo "<input type='checkbox' name='caracteristicas[]' value='{$fila['idCaracteristica']}'>";
                     echo "<label for='{$fila['Nombre']}'>{$fila['Nombre']}</label>";
                     echo "</li>";
                 }

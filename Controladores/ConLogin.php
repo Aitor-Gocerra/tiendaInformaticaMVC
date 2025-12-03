@@ -1,8 +1,7 @@
 <?php
 require_once __DIR__ . '/../Modelos/ModUsuario.php';
 
-class ConLogin
-{
+class ConLogin{
 
     public $vista = '';
 
